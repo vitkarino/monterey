@@ -17,3 +17,5 @@ Experience MacOS Monterey in your browser with some working features!
 * Google Chrome currently recommended
 * PC / Laptops works fine. 
 * Smartphones / Tablets are not supported
+
+#### Hope you enjoy! ❤️
