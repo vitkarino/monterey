@@ -23,12 +23,30 @@
     right: 0;
 }
 
+html {
+    overflow: hidden;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 .top-menu {
-    position: absolute;
+    position: relative;
     height: 24px;
     left: 0px;
     right: 0px;
     top: 0px;
+    overflow: hidden;
 }
 
 .blur {
@@ -73,7 +91,7 @@
 .time {
     box-sizing: border-box;
     display: inline;
-    width: 40px;
+    width: auto;
 }
 
 .left-side {
@@ -97,9 +115,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 4px;
 }
 
-.right-side span{
+.right-side span {
     padding: 4px;
 }
 
@@ -119,20 +138,30 @@
     height: 22px;
     box-sizing: border-box;
     height: auto;
-    
+}
+
+.content span:hover {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(67.3803px);
+    transition: 0.09s ease-in;
+}
+
+.content .right-side .date-and-time:hover {
+    background: none;
 }
 
 .dock {
     display: flex;
-    zoom: 0.8;
+    transform-origin: bottom;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 510px;
+    width: auto;
     height: 92px;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translate(-50%, 0) scale(0.7);
+    padding: 0 15px 0 15px;
     margin-left: auto;
     margin-right: auto;
     bottom: 4px;
@@ -140,54 +169,95 @@
     border: 0.5px solid rgba(255, 255, 255, 0.2);
     box-sizing: border-box;
     backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 24px;
-    overflow: hidden;
 }
 
 .icons {
     box-sizing: border-box;
     align-items: center;
+    justify-content: center;
     display: flex;
     border-radius: 24px;
-    padding: 10px;
-    width: auto;
+    width: 100%;
+    box-sizing: border-box;
     position: relative;
-    height: 76px;
+    height: auto;
 }
 
-.icons img {
+.dock a {
+    display: flex;
+    align-items: center;
+    height: auto;
+    transition: 0.2s ease-in-out;
+    width: auto;
+}
+
+.dock a:hover {
+    transform: scale(1.4);
+    padding: 0 10px 0 10px;
+    transform-origin: bottom;
+}
+
+.dock a img {
     width: 66px;
     height: 66px;
     margin: 0;
+    transition: 0.1s ease-in;
 }
 
-.icons img:nth-child(n+2) {
+.icons a:nth-child(n+2) {
     margin-left: 15px;
 }
 
 .divider {
     border-left: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0 15px 0 15px;
     height: 66px;
-    margin: 0 10px 0 10px;
 }
 
-.logo-context {
+.context-list {
     position: absolute;
-    top: 0;
-    left: 0;
     background: #28282899;
     border: 0.5px solid #00000033;
-    color: #DFDEDF;
-    margin: 25px 0 0 12px;
-    width: 233px;
-    height: 100px;
-    display: none;
+    width: auto;
+    height: auto;
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
-    padding: 5px 10px 5px 10px;
+    display: none;
     backdrop-filter: blur(50px);
+}
+
+.context-el {
+    list-style: none;
+    padding: 5px 0 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 0s ease-in;
+}
+
+.context-el:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.context-el:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.context-el:hover {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(67.3803px);
+    transition: 0.09s ease-in;
+}
+
+.context-el a {
+    text-decoration: none;
+    padding: 0 10px 0 10px;
+    color: #DFDEDF;
 }
 
 .context-menus {
@@ -195,12 +265,113 @@
     font-size: 13px;
 }
 
+
 .context-menus p {
     width: 100%;
 }
 
 .context-divider {
-    border-bottom: 1px solid#EBEBF52E;    ;
+    border-bottom: 1px solid#EBEBF52E;
     height: 1px;
-    margin: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+}
+
+.window {
+    position: absolute;
+    width: auto;
+    height: auto;
+    filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.15)) drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.35));
+}
+
+.window-title {
+    background: #1E1E1E;
+    cursor: move;
+    box-shadow: 0px 0.5px 0px rgba(0, 0, 0, 0.15), inset 0px -0.5px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 10px 10px 0px 0px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    color: rgba(235, 235, 245, 0.6);
+    font-family: 'sf-pro-bold';
+}
+
+.window-title span {
+    width: auto;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    position: absolute;
+}
+
+.window-title button {
+    width: 12px;
+    height: 12px;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+}
+
+.window-title button {
+    margin: 8px 0 8px 8px
+}
+
+.close-app {
+    background: #ED6A5F;
+}
+
+.hide-app {
+    background: #F5BF4F;
+}
+
+.expand-app {
+    background: #61C554;
+}
+
+.window-body {
+    background: rgba(40, 40, 40, 0.6);
+    backdrop-filter: blur(50px);
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+}
+
+.calculator-app .numbers {
+    color: #DFDEDF;
+    font-family: 'sf-pro-medium';
+    text-align: center;
+    padding: 2px;
+}
+
+.calculator-app .numbers td {
+    width: 70px;
+    height: 50px;
+    background: #6D687B;
+    font-size: 24px;
+    white-space: nowrap;
+}
+
+.calculator-app .output {
+    height: 70px;
+}
+
+.calculator-app .numbers td:last-child {
+    background: #FC9E2A;
+}
+
+.calculator-app button {
+    font-family: 'sf-pro-medium';
+    outline: none;
+    border: none;
+    padding: 20px 30px 20px 30px;
+}
+
+.calculator-app .output {
+    padding: 0 20px 0 20px;
+    color: #DFDEDF;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: 'sf-pro-medium';
+    font-size: 28px;
 }

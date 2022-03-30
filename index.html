@@ -13,13 +13,13 @@
 <body>
     <div class="background"></div>
     <div class="context-menus">
-        <div class="logo-context">
-            <p>About This Mac</p>
+        <ul class="context-list">
+            <li class="context-el"><a href="">Create folder</a></li>
+            <li class="context-el"><a href="">Create text file</a></li>
             <div class="context-divider"></div>
-            <p>System Preferences...</p>
-            <div class="context-divider"></div>
-            <p>Restart...</p>
-        </div>
+            <li class="context-el"><a href="">System preferences</a></li>
+            <li class="context-el"><a href="">Change system theme</a></li>
+        </ul>
     </div>
     <div class="top-menu">
         <div class="color-burn"></div>
@@ -47,14 +47,56 @@
     </div>
     <div class="dock">
         <span class="icons">
-            <img src="/src/img/Icon=finder.png" alt="">
-            <img src="/src/img/Icon=notes.png" alt="">
-            <img src="/src/img/Icon=calc.png" alt="">
-            <img src="/src/img/Icon=terminal.png" alt="">
-            <img src="/src/img/settings.png" alt="">
+            <a href=""><img src="/src/img/settings.png" alt=""></a>
+            <a href=""><img src="/src/img/Icon=notes.png" alt=""></a>
+            <a href=""><img src="/src/img/Icon=calc.png" alt=""></a>
+            <a href=""><img src="/src/img/vs-code.png" alt=""></a>
+            <a href=""><img src="/src/img/instagram.png" alt=""></a>
         </span>
         <span class="divider"></span>
-        <img src="/src/img/Trash.png" class="trash" alt="">
+        <a href=""><img src="/src/img/viktor-kisel-logo.png" class="trash" alt=""></a>
+    </div>
+    <div class="window" style="display: none">
+        <div class="window-title" id="title">
+            <div class="controls"><button class="close-app"></button><button class="hide-app"></button><button
+                    class="expand-app"></button></div><span>Title</span>
+        </div>
+        <div class="window-body">
+            <div class="calculator-app">
+                <div class="output">0</div>
+                <table class="numbers">
+                    <tr>
+                        <td data-action="clean">AC</td>
+                        <td data-action="plus-minus">±</td>
+                        <td data-action="percent">%</td>
+                        <td data-action="divide">÷</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>×</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td data-action="subtract">-</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td data-action="add">+</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td data-action="decimal">.</td>
+                        <td data-action="calculate">=</td>
+                    </tr>
+                    </ul>
+            </div>
+        </div>
     </div>
     <script src="/js/script.js"></script>
 </body>
